@@ -14,5 +14,6 @@ body {
 }
 
 :root {
-  --theme-color: #aab74f
+  --theme-color: #aab74f;
+  --border-color: rgba(73, 74, 85, 0.2);
 }
