@@ -16,4 +16,5 @@ body {
 :root {
   --theme-color: #aab74f;
   --border-color: rgba(73, 74, 85, 0.2);
+  --overlayBg: rgba(0, 0, 0, 0.5);
 }

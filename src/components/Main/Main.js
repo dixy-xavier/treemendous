@@ -19,7 +19,7 @@ const Main = () => {
   return (
     <div className={styles.wrapper}>
       <Subheader searchText={searchText} setSearchText={setSearchText} />
-      <Trees trees={filteredList} />
+      {filteredList.length ? <Trees trees={filteredList} /> : <div className={styles.noData}>No trees found</div>}
     </div>
   );
 };
