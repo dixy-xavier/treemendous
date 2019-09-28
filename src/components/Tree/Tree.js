@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Dialog from '../Dialog/Dialog';
-import Image from '../Image/Image';
+import ImageWrapper from '../ImageWrapper/ImageWrapper';
 import Loader from '../Loader/Loader';
 import styles from './Tree.css';
 
@@ -20,15 +20,15 @@ const Tree = ({ tree }) => {
       <div>Name: {tree.name}</div>
       <div>Species Name: {tree.species_name}</div>
       {displayImage && (
-        showError ? <div className={styles.error}>Something went wrong</div> : <Image
+        showError ? <div className={styles.error}>Something went wrong</div> : <ImageWrapper
           alt={tree.name}
           src={tree.image}
           className={styles.image}
+          onLoad={() => toggleLoading(false)}
           onClick={(e) => {
             e.stopPropagation();
             toggleDialog(true);
           }}
-          onLoad={() => toggleLoading(false)}
           onError={() => {
             toggleLoading(false);
             toggleError(true);
@@ -39,7 +39,10 @@ const Tree = ({ tree }) => {
       {displayDialog && <Dialog
         title={`${tree.name} (${tree.species_name})`}
         image={tree.image}
-        toggleDialog={() => toggleDialog(false)}
+        toggleDialog={(e) => {
+          e.stopPropagation();
+          toggleDialog(false);
+        }}
       />}
     </div>
   );

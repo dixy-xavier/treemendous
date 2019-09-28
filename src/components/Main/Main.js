@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Subheader from '../Subheader/Subheader';
 import Trees from '../Trees/Trees';
 import { GET_TREES } from './Main.constants';
-import styles from './Main.css';
 import { request } from './Main.utils';
+import styles from './Main.css';
 
 const Main = () => {
   const [searchText, setSearchText] = useState('');
