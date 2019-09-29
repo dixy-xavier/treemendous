@@ -4,6 +4,8 @@ import ImageWrapper from '../ImageWrapper/ImageWrapper';
 import Loader from '../Loader/Loader';
 import styles from './Tree.css';
 
+const LabelValue = ({ label, value }) => <div>{`${label}: ${value}`}</div>;
+
 const Tree = ({ tree }) => {
   const [loading, toggleLoading] = useState(false);
   const [showError, toggleError] = useState(false);
@@ -17,8 +19,8 @@ const Tree = ({ tree }) => {
 
   return (
     <div className={styles.wrapper} onClick={() => toggleImage(!displayImage)}>
-      <div>Name: {tree.name}</div>
-      <div>Species Name: {tree.species_name}</div>
+      <LabelValue label="Name" value={tree.name} />
+      <LabelValue label="Species Name" value={tree.species_name} />
       {displayImage && (
         showError ? <div className={styles.error}>Something went wrong</div> : <ImageWrapper
           alt={tree.name}

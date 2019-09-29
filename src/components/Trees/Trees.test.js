@@ -12,16 +12,17 @@ describe('Trees component tests', () => {
     species_name: 'Rhizophora mangle',
     image: 'https://upload.wikimedia.org/wikipedia/en/1/16/Red_mangrove-everglades_natl_park.jpg'
   }] };
+  const container = shallow(<Trees {...props} />);
   test('Should render without crashing', () => {
-    expect(shallow(<Trees {...props} />).length).toEqual(1);
+    expect(container.length).toEqual(1);
   });
 
   test('Should have Tree component', () => {
-    expect(shallow(<Trees {...props} />).find('Tree').length).toEqual(2);
+    expect(container.find('Tree').length).toEqual(2);
   });
 
   test('Should have Tree component with tree prop', () => {
-    expect(shallow(<Trees {...props} />).find('Tree').first().prop('tree')).toEqual(props.trees[0]);
+    expect(container.find('Tree').first().prop('tree')).toEqual(props.trees[0]);
   });
 
 });
