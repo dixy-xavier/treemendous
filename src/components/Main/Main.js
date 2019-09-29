@@ -6,7 +6,7 @@ import { GET_TREES } from './Main.constants';
 import { request } from './Main.utils';
 import styles from './Main.css';
 
-export const NoData = () => (<div className={styles.noData}>No trees found</div>);
+const NoData = () => (<div className={styles.noData}>No trees found</div>);
 
 const Main = () => {
   const [searchText, setSearchText] = useState('');
