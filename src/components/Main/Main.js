@@ -6,6 +6,8 @@ import { GET_TREES } from './Main.constants';
 import { request } from './Main.utils';
 import styles from './Main.css';
 
+export const NoData = () => (<div className={styles.noData}>No trees found</div>);
+
 const Main = () => {
   const [searchText, setSearchText] = useState('');
   const [loading, toggleLoading] = useState(true);
@@ -22,7 +24,7 @@ const Main = () => {
   return (
     <div className={styles.wrapper}>
       <Subheader searchText={searchText} setSearchText={setSearchText} />
-      {filteredList.length ? <Trees trees={filteredList} /> : <div className={styles.noData}>No trees found</div>}
+      {filteredList.length ? <Trees trees={filteredList} /> : <NoData />}
       {loading && <Loader classes={{ wrapper: styles.loader}} />}
     </div>
   );
