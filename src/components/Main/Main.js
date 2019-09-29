@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Loader from '../Loader/Loader';
 import Subheader from '../Subheader/Subheader';
 import Trees from '../Trees/Trees';
 import { GET_TREES } from './Main.constants';
@@ -7,11 +8,13 @@ import styles from './Main.css';
 
 const Main = () => {
   const [searchText, setSearchText] = useState('');
+  const [loading, toggleLoading] = useState(true);
   const [trees, setTrees] = useState([]);
   useEffect(() => {
     request(GET_TREES).then((response) => {
       if (response.trees.length) {
         setTrees(response.trees);
+        toggleLoading(false);
       }
     });
   }, []);
@@ -20,6 +23,7 @@ const Main = () => {
     <div className={styles.wrapper}>
       <Subheader searchText={searchText} setSearchText={setSearchText} />
       {filteredList.length ? <Trees trees={filteredList} /> : <div className={styles.noData}>No trees found</div>}
+      {loading && <Loader classes={{ wrapper: styles.loader}} />}
     </div>
   );
 };
